@@ -19,4 +19,4 @@ Route::get('/form', function () {
     return view('form');
 });
 
-Route::resource('form', 'formcontroller');
+Route::resource('forms', 'formcontroller');

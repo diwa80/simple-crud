@@ -7,11 +7,11 @@
   }
 </style>
 <div class="uper">
-  @if(session()->get('success'))
+  <!-- @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}  
     </div><br />
-  @endif
+  @endif -->
   <table class="table table-striped">
     <thead>
         <tr>
@@ -25,16 +25,16 @@
     <tbody>
         @foreach($forms as $form)
         <tr>
-            <td>{{$share->id}}</td>
-            <td>{{$share->name}}</td>
-            <td>{{$share->email}}</td>
-            <td>{{$share->password}}</td>
-            <td><a href="{{ route('form.edit',$form->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>{{$form->id}}</td>
+            <td>{{$form->name}}</td>
+            <td>{{$form->email}}</td>
+            <td>{{$form->password}}</td>
+            <td><a href="{{ route('forms.edit',$form->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
-                <form action="{{ route('form.destroy', $form->id)}}" method="post">
+                <!-- <form action="{{ route('form.destroy', $form->id)}}" method="post">
                   @csrf
                   @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
+                  <button class="btn btn-danger" type="submit">Delete</button> -->
                 </form>
             </td>
         </tr>

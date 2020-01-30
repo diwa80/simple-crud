@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\form; 
 
 class formcontroller extends Controller
 {
@@ -14,7 +15,7 @@ class formcontroller extends Controller
     public function index()
     {
        $form = Form::all();
-       return view('form.index', compact('form'));
+       return view('forms.index', compact('forms'));
     }
 
     /**
@@ -24,7 +25,7 @@ class formcontroller extends Controller
      */
     public function create()
     {
-        return view ('form.create');
+        return view ('forms.create');
     }
 
     /**
@@ -42,13 +43,13 @@ class formcontroller extends Controller
 
         ]);
         $form = new form([
-            'name' => $request -> get('name'),
-            'email' => $request -> get('email'),
-            'password' => $request -> get('password')
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
             ]);
     
             $form->save();
-            return redirect('/form')->with('success', 'form has been saved');
+            return redirect('/forms')->with('success', 'form has been saved');
         }
     /**
      * Display the specified resource.
@@ -70,7 +71,7 @@ class formcontroller extends Controller
     public function edit($id)
     {
         $form = Form::all($id);
-        return view('form.edit', compact('form'));
+        return view('forms.edit', compact('forms'));
     }
 
     /**
@@ -82,7 +83,19 @@ class formcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=> 'required',
+            'password' => 'required'
+          ]);
+    
+          $form = form::find($id);
+          $form->name = $request->get('name');
+          $form->email = $request->get('email');
+          $form->address = $request->get('password');
+          $form->save();
+    
+          return redirect('/forms')->with('success', 'forms has been updated');
     }
 
     /**

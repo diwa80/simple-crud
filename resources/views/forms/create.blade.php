@@ -45,7 +45,7 @@ input {
 
 
 
-<form method="post" action="{{route('form.store')}}" id="form" class="validate">
+<form method="post" action="{{route('forms.store')}}" id="form" class="validate">
   <div class="form-field">
   @csrf
     <label for="full-name">Full Name</label>
@@ -56,8 +56,8 @@ input {
     <input type="email" name="email" id="email-input" placeholder="example@domain.com" />
   </div>
   <div class="form-field">
-    <label for="password-input">Password</label>
-    <input type="password" name="password" id="password-input" />
+    <label for="password-input">Address</label>
+    <input type="text" name="password" id="password-input" />
   </div>
   <div class="form-field">
     <label for=""></label>
